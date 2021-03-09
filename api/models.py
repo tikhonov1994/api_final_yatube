@@ -39,7 +39,7 @@ class Comment(models.Model):
     )
     text = models.TextField()
     created = models.DateTimeField(
-        "Дата добавления", auto_now_add=True, db_index=True
+        'Дата добавления', auto_now_add=True, db_index=True
     )
     group = models.ForeignKey(
         Group, blank=True, null=True, on_delete=models.SET_NULL,
@@ -56,5 +56,7 @@ class Follow(models.Model):
 
     class Meta:
         constraints = [
-            UniqueConstraint(fields=['user', 'following'], name='unique_follow')
+            UniqueConstraint(
+                fields=['user', 'following'], name='unique_follow'
+            )
         ]
